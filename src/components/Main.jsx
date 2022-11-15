@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { getRoutines } from "../apiFunctions";
-import { Navbar, Routines, Login, Register } from "./";
+import { getActivities, getRoutines } from "../apiFunctions";
+import { Navbar, Routines, Login, Register, Activities } from "./";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const Main = () => {
   const [routines, setRoutines] = useState([]);
+  const[activities, setActvities]=useState([]);
   // const[logIn, setLogIn] = useState("")
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -15,6 +16,15 @@ const Main = () => {
     }
     fetchRoutines();
   }, []);
+
+  useEffect(() => {
+    async function fetchActivities() {
+      const allActivities = await getActivities();
+      setActvities(allActivities);
+    }
+    fetchActivities();
+  }, []);
+
 
   const getLoggedInUser = async () => {
     const token = localStorage.getItem("token");
@@ -45,6 +55,7 @@ const Main = () => {
           }
         />
         <Route path="/register" element={<Register />} />
+        <Route path="/activities" element={<Activities activities={activities}/>}/>
       </Routes>
     </div>
   );

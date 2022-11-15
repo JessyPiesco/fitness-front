@@ -7,6 +7,12 @@ export async function getRoutines() {
   return result;
 }
 
+export async function getActivities(){
+    const response= await fetch(`${BASE}/activities`);
+    const result= await response.json();
+    return result;
+}
+
 export async function loginUser(username, password) {
   try {
     const loginResult = await fetch(`${BASE}/users/login`, {
