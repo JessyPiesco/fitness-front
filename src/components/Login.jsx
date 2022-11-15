@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { loginUser } from "../apiFunctions";
+import { NavLink } from "react-router-dom"
 
 
 const Login = (props) => {
@@ -41,6 +42,7 @@ const Login = (props) => {
                     Login        
                 </button>
             </form>
+            <NavLink className="signBtn" to="/register">New User Sign Up</NavLink>
         </div>
     )
 
