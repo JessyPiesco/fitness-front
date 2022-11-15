@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const Main = () => {
   const [routines, setRoutines] = useState([]);
-  const[activities, setActvities]=useState([]);
+  const [activities, setActvities] = useState([]);
   // const[logIn, setLogIn] = useState("")
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -25,7 +25,6 @@ const Main = () => {
     fetchActivities();
   }, []);
 
-
   const getLoggedInUser = async () => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -41,7 +40,7 @@ const Main = () => {
 
   return (
     <div id="main">
-      <Navbar />
+      <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
       <Routes>
         <Route path="/routines" element={<Routines routines={routines} />} />
         <Route
@@ -55,7 +54,10 @@ const Main = () => {
           }
         />
         <Route path="/register" element={<Register />} />
-        <Route path="/activities" element={<Activities activities={activities}/>}/>
+        <Route
+          path="/activities"
+          element={<Activities activities={activities} />}
+        />
       </Routes>
     </div>
   );

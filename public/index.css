@@ -42,3 +42,6 @@ body {
   display: flex;
   flex-direction: column;
 }
+.links{
+  color:white
+}
