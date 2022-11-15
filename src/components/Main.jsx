@@ -5,6 +5,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const Main = () => {
   const[routines, setRoutines]= useState([])
+  const[logIn, setLogIn] = useState("")
+  const[loggedIn, setLoggedIn] = useState(false)
 
   useEffect(()=>{
     async function fetchRoutines(){
