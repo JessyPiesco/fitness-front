@@ -9,15 +9,16 @@ const Routines = (props) => {
   return (
     <div>
       <div id="routine">
-        <h2>Your Routines</h2>
+        <h2>Check out these Routines</h2>
+        <h3>Try them all!</h3>
       </div>
       <div id="routines">
         {routines && routines.length
           ? routines.map((routine) => {
               return (
                 <div className="IRoutines" key={`routine-${routine.id}`}>
-                  <div>{routine.name}</div>
-                  <div>Created by:{routine.creatorName} </div>
+                  <div className="title">{routine.name}</div>
+                  <div>Created by: {routine.creatorName} </div>
                   <div>{routine.goal}</div>
                 </div>
               );

@@ -16,3 +16,29 @@ body {
   display: flex;
   align-items: center;
 }
+
+#routine{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  margin-bottom: 2px;
+  align-items: center;
+}
+
+.IRoutines{
+  display: flex;
+  width: 75%;
+  flex-direction: column;
+  margin-bottom: 10px;
+  border: solid black 1px;
+  padding: 15px;
+  box-shadow: 7px 2px 9px black;
+}
+.title{
+  display: flex;
+  font-weight: bold;
+}
+#routines{
+  display: flex;
+  flex-direction: column;
+}
