@@ -14,7 +14,12 @@ const Register = () => {
 
             localStorage.removeItem("token");
             localStorage.setItem("token", token);
-            navigate("/login")
+            
+            if(token){
+                navigate("/login");
+                alert("Thank you for Signing Up, please Log In")
+            } 
+
 ;        } catch (error) {
             console.log(error)
         }
@@ -22,18 +27,16 @@ const Register = () => {
 
 
     return (
-        <div>
+        <div className="box">
             <h2>Register</h2>
-            <form onSubmit={handleRegister}>
-                <div>
-                    <label>Username</label>
-                    <input type="text"/>
+            <form className="dataInput" onSubmit={handleRegister}>
+                <div className="userBox">
+                    <input className="userInput" type="text" placeholder="username"/>
                 </div>
-                <div>
-                    <label>Password</label>
-                    <input type="password"/>
+                <div className="passBox">
+                    <input className="userInput" type="password" placeholder="password"/>
                 </div>
-                <button type="submit">
+                <button className="submitBtn" type="submit">
                     Register
                 </button>
             </form>

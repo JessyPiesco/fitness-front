@@ -16,35 +16,39 @@ export async function loginUser(username, password) {
       },
       body: JSON.stringify({
         username,
-        password
+        password,
       }),
     });
     const resp = await loginResult.json();
-    console.log(resp)
+    console.log(resp);
+    if (resp.error) {
+      alert(resp.error);
+    }
     return resp.token;
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 }
 
 export async function registerUser(username, password) {
-    const options = {
-        method: "POST", 
-        headers: {
-            "Content-Type": "application/json"
-        }, body: JSON.stringify({
-            username, 
-            password
-        })
-    }
-    const response = await fetch(`${BASE}/users/register`,options)
-    const result = await response.json()
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username,
+      password,
+    }),
+  };
+  const response = await fetch(`${BASE}/users/register`, options);
+  const result = await response.json();
 
-    console.log(response)
-    console.log(result)
+  console.log(response);
+  console.log(result);
 
-    if (result.error){
-        alert ("Account is already taken. Please choose a different Username")
-    }
-    return result.token
+  if (result.error) {
+    alert(result.error);
+  }
+  return result.token;
 }
