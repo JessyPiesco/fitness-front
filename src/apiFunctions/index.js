@@ -6,3 +6,24 @@ export async function getRoutines(){
   const routines= result.routines
   return routines;
 }
+
+export async function loginUser(username, password) {
+    try{
+        const loginResult = await fetch(`${BASE_URL}/users/login`,{
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username,
+                password
+            })
+        }).then(response => response.json())
+          .then(result => {
+            console.log(result);
+          });
+    } 
+    catch(error){
+        console.error(error)
+    }
+}
