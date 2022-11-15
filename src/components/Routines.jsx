@@ -17,7 +17,7 @@ const Routines = (props) => {
               return (
                 <div className="IRoutines" key={`routine-${routine.id}`}>
                   <div>{routine.name}</div>
-                  <div>Created by: </div>
+                  <div>Created by:{routine.creatorName} </div>
                   <div>{routine.goal}</div>
                 </div>
               );
