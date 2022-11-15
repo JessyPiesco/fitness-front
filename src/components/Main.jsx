@@ -9,6 +9,7 @@ const Main = () => {
   useEffect(()=>{
     async function fetchRoutines(){
       const allRoutines = await getRoutines();
+      console.log(allRoutines)
     setRoutines(allRoutines);
   }
   fetchRoutines();

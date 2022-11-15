@@ -3,8 +3,8 @@ const BASE = "http://fitnesstrac-kr.herokuapp.com/api"
 export async function getRoutines(){
   const response= await fetch(`${BASE}/routines`);
   const result = await response.json();
-  const routines= result.routines
-  return routines;
+
+  return result;
 }
 
 export async function loginUser(username, password) {
@@ -22,7 +22,7 @@ export async function loginUser(username, password) {
           .then(result => {
             console.log(result);
           });
-    } 
+    }
     catch(error){
         console.error(error)
     }
