@@ -8,10 +8,12 @@ const Login = () => {
             <h2>Log in</h2>
             <form>
                 <div>
-                    <input type="text">Username</input>
+                    <label>Username</label>
+                    <input type="text"/>
                 </div>
                 <div>
-                    <input type="password">Password</input>
+                    <label>Password</label>
+                    <input type="password"/>
                 </div>
                 <button type="submit">
                     Login        
@@ -19,7 +21,7 @@ const Login = () => {
             </form>
         </div>
     )
-    
+
 }
 
 export default Login
