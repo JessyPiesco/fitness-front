@@ -1,7 +1,9 @@
-import React from "react";
-import {Navbar} from "./"
+import React, {useState, useEffect} from "react";
+import { getRoutines } from "../apiFunctions";
+import {Navbar, Routines} from "./"
 
 const Main = () => {
+  const[routines, setRoutines]= useState([])
   return (
     <div id="main">
 <Navbar/>
