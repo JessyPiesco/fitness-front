@@ -1,9 +1,19 @@
 import React from "react";
 
 const SeeRoutineDetails = (props) => {
+  const routine=props.routine
 
-return(
-    <h3>blah</h3>
+return(<>
+<div className="IRoutines">
+  <div>{routine.name}</div>
+  <div>Created by: {routine.creatorName} </div>
+  <div>{routine.goal}</div>
+
+  {routine.activities.map((activity) => {
+    return(
+  <div>{activity.name}</div>)})}
+</div>
+</>
 )
 }
 
