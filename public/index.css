@@ -114,4 +114,24 @@ body {
   display: flex;
   flex-direction: column;
 }
-
+#activity{
+  display: flex;
+  flex-direction: column;
+}
+#activities{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  margin-bottom: 2px;
+  align-items: center;
+}
+.IActivities{
+  background-color: white;
+  display: flex;
+  width: 75%;
+  flex-direction: column;
+  margin-bottom: 10px;
+  border: solid black 1px;
+  padding: 15px;
+  box-shadow: 7px 2px 9px black;
+}
