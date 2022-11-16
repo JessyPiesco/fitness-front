@@ -19,10 +19,15 @@ const Navbar = (props) => {
           {
             loggedIn ?
             (
+              <>
               <NavLink className="linkBar" onClick={()=>{
                 localStorage.removeItem("token");
                 setLoggedIn(false);
-              }}>LogOut</NavLink>
+              }}>LogOut</NavLink> 
+              <NavLink className="linkBar" to="/profile">
+                Profile
+              </NavLink>
+              </>
             ): (<NavLink className="linkBar" to="/login">
               Login
             </NavLink>

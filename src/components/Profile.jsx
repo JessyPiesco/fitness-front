@@ -1,18 +1,28 @@
-import React, {useState} from "react";
-
+import React, { useState } from "react";
+import { Routines } from './'
 
 const Profile = (props) => {
-    const userProfile = props.userProfile
-    const setUserProfile = props.setUserProfile
-
-    
+  const routines = props.routines
+  console.log(routines)
+  const loggedIn = props.loggedIn;
 
   return (
     <div>
       <h2>This is Profile page</h2>
       <div>
-        <h3>this is your Routines</h3>
-        <h3>this is your Activities</h3>
+      {routines && routines.length
+          ? routines.map((routine) => {
+            // console.log(routine, "HELLO")
+            //   return (
+            //     if(routine.creatorName === )
+            //     <div className="IRoutines" key={`routine-${routine.id}`}>
+            //       <div className="title">{routine.name}</div>
+            //       <div>Created by: {routine.creatorName} </div>
+            //       <div>{routine.goal}</div>
+            //     </div>
+            //   );
+            })
+          : null}
       </div>
     </div>
   );

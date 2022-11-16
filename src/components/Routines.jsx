@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const Routines = (props) => {
   const routines = props.routines;
-  console.log(routines)
+  
 
   return (
     <div>

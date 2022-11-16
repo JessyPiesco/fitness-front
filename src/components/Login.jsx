@@ -3,7 +3,8 @@ import { loginUser } from "../apiFunctions";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const Login = (props) => {
-  const [userName, setUserName] = useState("");
+  const userName = props.userName
+  const setUserName = props.setUserName
   const setLoggedIn = props.setLoggedIn;
   const loggedIn = props.loggedIn;
   const getLoggedInUser = props.getLoggedInUser;
@@ -14,13 +15,20 @@ const Login = (props) => {
       e.preventDefault();
       const username = e.target[0].value;
       const password = e.target[1].value;
+      
       const token = await loginUser(username, password);
-
+      console.log(username)
+      
       localStorage.removeItem("token");
       localStorage.setItem("token", token);
-      setUserName(userName);
+      localStorage.removeItem("username");
+      localStorage.setItem("username", username);
+
+      
       setLoggedIn(true);
       getLoggedInUser();
+      setUserName(username);
+      console.log(userName, "AUGHHHHH")
       navigate("/")
     } catch (error) {
       console.log(error);
