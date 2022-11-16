@@ -1,4 +1,6 @@
 import React from "react";
+import { MakeActivitiy } from "./";
+import { NavLink } from "react-router-dom";
 
 const Activities = (props) => {
   const activities = props.activities;
@@ -9,6 +11,7 @@ const Activities = (props) => {
       <div id="activities">
         <h2>Check out these activities</h2>
         <h3>Add them to your routines today!</h3>
+        <NavLink to="/makeactivitiy">New Activity</NavLink>
       </div>
       <div id="activity">
         {activities && activities.length
