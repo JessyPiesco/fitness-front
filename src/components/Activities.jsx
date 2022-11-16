@@ -1,11 +1,20 @@
-import React from "react";
-import { MakeActivity } from "./";
+import React, {useState} from "react";
+import { MakeActivity, SeeActivityDetails } from "./";
 import { NavLink } from "react-router-dom";
 
 const Activities = (props) => {
   const activities = props.activities;
-
-
+  const [formDetails, setFormDetails]=useState({
+    name: '',
+    description: '',
+  })
+// async function handleChange(event){
+//   event.preventDefault()
+//   const toUpdate=event.target.id
+//   const update=event.target.value
+//   const updateForm={...formDetails, [toUpdate]:update}
+//   setFormDetails(updatedForm)
+// }
   return (
     <div>
       <div id="activities">
@@ -16,11 +25,9 @@ const Activities = (props) => {
       <div id="activity">
         {activities && activities.length
           ? activities.map((activity) => {
+            console.log(activity)
               return (
-                <div className="IActivities" key={`activity-${activity.id}`}>
-                  <div className="title">{activity.name}</div>
-                  <div>{activity.description}</div>
-                </div>
+               <SeeActivityDetails activity={activity} key={`activity-${activity.id}`}/>
               );
             })
           : null}

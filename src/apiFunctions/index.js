@@ -75,3 +75,20 @@ export async function createActivity(name, description){
     const result= await response.json();
     return result.activities
 }
+
+export async function updateActivity(name, description, id){
+    const options={
+        method:"PATCH",
+        headers:{
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+            name,
+            description,
+        }),
+    };
+    const response= await fetch(`${BASE}/activities/${id}`, options);
+    const result= await response.json();
+    return result;
+}
