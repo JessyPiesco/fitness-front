@@ -19,6 +19,9 @@ const Main = () => {
   // const[logIn, setLogIn] = useState("")
   const [loggedIn, setLoggedIn] = useState(false);
   const [userProfile, setUserProfile] = useState([]);
+  const [userName, setUserName] = useState("");
+
+  
 
   useEffect(() => {
     async function fetchRoutines() {
@@ -40,6 +43,10 @@ const Main = () => {
     const token = localStorage.getItem("token");
     if (token) {
       setLoggedIn(true);
+    }
+    const user = localStorage.getItem("username");
+    if(user) {
+      setUserName(user);
     }
   };
   useEffect(() => {
@@ -68,6 +75,8 @@ const Main = () => {
               loggedIn={loggedIn}
               setLoggedIn={setLoggedIn}
               getLoggedInUser={getLoggedInUser}
+              userName={userName}
+              setUserName={setUserName}
             />
           }
         />
@@ -78,7 +87,7 @@ const Main = () => {
         />
         <Route path="/makeactivity" element={<MakeActivity />} />
         <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} routines={routines}/>} />
       </Routes>
     </div>
   );

@@ -14,7 +14,7 @@ body {
   flex-grow: 1;
   max-height: 10%;
   min-height: 40px;
-  background-color: #222222;
+  background-color: grey;
   color: white;
   padding: 10px;
   display: flex;
@@ -135,3 +135,11 @@ body {
   padding: 15px;
   box-shadow: 7px 2px 9px black;
 }
+
+/* #background>img{
+  width: 100vw;
+  height: 100vh;
+  z-index: -30;
+  position: absolute;
+  top: 0;
+} */
