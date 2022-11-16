@@ -4,17 +4,8 @@ import { NavLink } from "react-router-dom";
 
 const Activities = (props) => {
   const activities = props.activities;
-  const [formDetails, setFormDetails]=useState({
-    name: '',
-    description: '',
-  })
-// async function handleChange(event){
-//   event.preventDefault()
-//   const toUpdate=event.target.id
-//   const update=event.target.value
-//   const updateForm={...formDetails, [toUpdate]:update}
-//   setFormDetails(updatedForm)
-// }
+
+
   return (
     <div>
       <div id="activities">
