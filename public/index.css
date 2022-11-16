@@ -5,6 +5,9 @@ body {
   margin: 0;
 }
 
+.inputH {
+  margin: 0px;
+}
 
 #navbar {
   font-family: 'Poller One', Arial, sans-serif;
@@ -13,8 +16,76 @@ body {
   min-height: 40px;
   background-color: #222222;
   color: white;
+  padding: 10px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.linkBar{
+  padding: 3px;
+  color: white;
+}
+.linkBar:hover{
+  color: black;
+}
+
+#login-register{
+  height: 813px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box{
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  padding: 30px;
+  background-color: grey;
+  box-shadow: 0 0 12px black;
+  border-radius: 25px;
+}
+
+.dataInput{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.userInput{
+  padding: 8px;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.userBox{
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.passBox{
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.submitBtn{
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  background-color: white;
+}
+
+.signBtn{
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+.signBtn:hover{
+  color: black;
 }
 
 #routine{
@@ -26,6 +97,7 @@ body {
 }
 
 .IRoutines{
+  background-color: white;
   display: flex;
   width: 75%;
   flex-direction: column;
@@ -42,6 +114,4 @@ body {
   display: flex;
   flex-direction: column;
 }
-.links{
-  color:white
-}
+
