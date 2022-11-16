@@ -93,15 +93,15 @@ export async function updateActivity(name, description, id){
     return result;
 }
 
-export async function personalRoutines(){
+export async function personalRoutines(username){
   try {
-    const profileRoutines = await fetch(`${BASE}/users/:username/routines`, {
+    const response = await fetch(`${BASE}/users/${username}/routines`, {
       headers: {
         "Content-Type": "application/json",
       },
     });
-    const response = await profileRoutines.json();
-    return response.token;
+    const result = await response.json()
+    return result
   } catch (error) {
     console.log(error);
   }
