@@ -94,12 +94,15 @@ export async function updateActivity(name, description, id){
 }
 
 export async function personalRoutines(){
-  const options={
-    header: {
-      "Content-Type": "application/json",
-    }
-  };
-  const response = await fetch(`${BASE}/users/:username/routines`, options)
-  const result = await response.json()
-  return result
+  try {
+    const profileRoutines = await fetch(`${BASE}/users/:username/routines`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const response = await profileRoutines.json();
+    return response.token;
+  } catch (error) {
+    console.log(error);
+  }
 }
