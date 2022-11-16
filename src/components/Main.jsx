@@ -77,7 +77,7 @@ const Main = () => {
           element={<Activities activities={activities} />}
         />
         <Route path="/makeactivity" element={<MakeActivity />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>
