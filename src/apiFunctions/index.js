@@ -58,3 +58,20 @@ export async function registerUser(username, password) {
   }
   return result.token;
 }
+
+export async function createActivitiy(name, description){
+    const options ={
+        method: "POST",
+        headers:{
+            "Content-type":"application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+            name,
+            description,
+        }),
+    }
+    const response= await fetch(`${BASE}/activities`, options);
+    const result= await response.json();
+    return result.activities
+}
