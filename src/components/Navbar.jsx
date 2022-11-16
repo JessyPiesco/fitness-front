@@ -12,25 +12,25 @@ const Navbar = (props) => {
       <div id="navbar">
         <h2> Workout Suits</h2>
         <div className="links">
-          <NavLink to="/">
+          <NavLink className="linkBar" to="/">
             Home
           </NavLink>
           {
             loggedIn ?
             (
-              <NavLink onClick={()=>{
+              <NavLink className="linkBar" onClick={()=>{
                 localStorage.removeItem("token");
                 setLoggedIn(false);
               }}>LogOut</NavLink>
-            ): (<NavLink to="/login">
+            ): (<NavLink className="linkBar" to="/login">
               Login
             </NavLink>
-            )
-            
-          }
+            ) 
           
-          <NavLink to="/routines">Routines</NavLink>
-          <NavLink to="/activities">Activities</NavLink> 
+          }
+
+          <NavLink className="linkBar"to="/routines">Routines</NavLink>
+          <NavLink className="linkBar"to="/activities">Activities</NavLink> 
         </div>
       </div>
     </>
