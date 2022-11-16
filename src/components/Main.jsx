@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { getActivities, getRoutines } from "../apiFunctions";
-import { Navbar, Routines, Login, Register, Activities } from "./";
+import {
+  Navbar,
+  Routines,
+  Login,
+  Register,
+  Activities,
+  Home,
+  Profile,
+  MakeActivity,
+  MakeRoutine,
+} from "./";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const Main = () => {
@@ -8,6 +18,7 @@ const Main = () => {
   const [activities, setActvities] = useState([]);
   // const[logIn, setLogIn] = useState("")
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userProfile, setUserProfile] = useState([]);
 
   useEffect(() => {
     async function fetchRoutines() {
@@ -40,9 +51,16 @@ const Main = () => {
 
   return (
     <div id="main">
-      <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+      <Navbar
+        loggedIn={loggedIn}
+        setLoggedIn={setLoggedIn}
+        userProfile={userProfile}
+        setUserProfile={setUserProfile}
+      />
       <Routes>
         <Route path="/routines" element={<Routines routines={routines} />} />
+
+        <Route path="/makeroutine" element={<MakeRoutine />} />
         <Route
           path="/login"
           element={
@@ -58,6 +76,9 @@ const Main = () => {
           path="/activities"
           element={<Activities activities={activities} />}
         />
+        <Route path="/makeactivity" element={<MakeActivity />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { loginUser } from "../apiFunctions";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   const [userName, setUserName] = useState("");
   const setLoggedIn = props.setLoggedIn;
   const loggedIn = props.loggedIn;
   const getLoggedInUser = props.getLoggedInUser;
+  const navigate = useNavigate()
 
   async function handleSubmit(e) {
     try {
@@ -20,6 +21,7 @@ const Login = (props) => {
       setUserName(userName);
       setLoggedIn(true);
       getLoggedInUser();
+      navigate("/")
     } catch (error) {
       console.log(error);
     }
