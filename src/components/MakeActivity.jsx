@@ -1,13 +1,13 @@
-import React from "react";
-import { createActivitiy } from "../apiFunctions";
+import React, {useState} from "react";
+import { createActivity } from "../apiFunctions";
 
-const MakeActivitiy = (props) => {
+const MakeActivity = (props) => {
   const [name, setName]= useState("")
   const [description, setDescription]=useState("")
 
   async function handleSubmit(event){
     try{
-      const newActivity= await createActivitiy(name, description)
+      const newActivity= await createActivity(name, description)
     }catch(error){
       console.log(error)
     }
@@ -42,4 +42,4 @@ return(
   </div>
 );
 };
-  export default MakeActivitiy;
+  export default MakeActivity;

@@ -59,7 +59,7 @@ export async function registerUser(username, password) {
   return result.token;
 }
 
-export async function createActivitiy(name, description){
+export async function createActivity(name, description){
     const options ={
         method: "POST",
         headers:{

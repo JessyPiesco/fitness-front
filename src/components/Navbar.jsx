@@ -5,7 +5,8 @@ import { useState } from "react";
 const Navbar = (props) => {
   const setLoggedIn = props.setLoggedIn
   const loggedIn = props.loggedIn
-
+  const userProfile = props.userProfile
+  const setUserProfile = props.setUserProfile
   
   return (
     <>
@@ -28,7 +29,6 @@ const Navbar = (props) => {
             ) 
           
           }
-
           <NavLink className="linkBar"to="/routines">Routines</NavLink>
           <NavLink className="linkBar"to="/activities">Activities</NavLink> 
         </div>
