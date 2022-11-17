@@ -68,11 +68,11 @@ const Main = () => {
       <Navbar
         loggedIn={loggedIn}
         setLoggedIn={setLoggedIn}
-        
+
 
       />
       <Routes>
-        <Route path="/routines" element={<Routines routines={routines} />} />
+        <Route path="/routines" element={<Routines routines={routines} activities={activities}/>} />
 
         <Route path="/makeroutine" element={<MakeRoutine />} />
         <Route
@@ -94,7 +94,7 @@ const Main = () => {
         />
         <Route path="/makeactivity" element={<MakeActivity />} />
         <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile routines={userRoutines} loggedIn={loggedIn} setLoggedIn={setLoggedIn} 
+        <Route path="/profile" element={<Profile routines={userRoutines} loggedIn={loggedIn} setLoggedIn={setLoggedIn}
         userName={userName} setUserName={setUserName}/>} />
       </Routes>
     </div>
