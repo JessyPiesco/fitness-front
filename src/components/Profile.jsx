@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { personalRoutines } from "../apiFunctions";
-import { Routines } from "./";
+import React from "react";
+import { NavLink } from "react-router-dom"
 
 const Profile = (props) => {
   console.log(props);
@@ -16,16 +15,25 @@ const Profile = (props) => {
         {routines.length ? (
           routines.map((routine) => {
             return (
+              <div key={`routine-${routine.id}`}>
               <div className="IRoutines" key={`routine-${routine.id}`}>
                 <div className="title">{routine.name}</div>
                 <div>Created by: {routine.creatorName} </div>
                 <div>{routine.goal}</div>
               </div>
+              <NavLink className="linkBar" to="/makeroutine">Make a New Routine</NavLink>
+              </div>
             );
           })
         ) : (
-          <div>Please Log In...</div>
-        )}
+          <>
+          {loggedIn ? (
+             <div>Your Routines</div> 
+          ) : (
+           <div>Please Log In...</div> 
+          )}
+          </>
+          )}
       </div>
     </div>
   );

@@ -24,10 +24,10 @@ body {
 
 .linkBar{
   padding: 3px;
-  color: white;
+  color: green;
 }
 .linkBar:hover{
-  color: black;
+  color: blue;
 }
 
 #login-register{
