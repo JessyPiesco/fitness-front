@@ -146,6 +146,7 @@ export async function updateRoutine(name, goal, id){
 }
 
 export async function destroyRoutine(id){
+  console.log(id, "hello")
   const options={
     method: "DELETE",
     headers: {
