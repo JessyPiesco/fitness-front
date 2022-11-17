@@ -107,7 +107,6 @@ export async function createRoutine(title, goal){
   }
   const response= await fetch(`${BASE}/routines`, options);
   const result= await response.json();
-  console.log(result, "HEHEHEEHEH")
   return result.routines
 }
 
