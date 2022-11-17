@@ -28,7 +28,10 @@ const Profile = (props) => {
         ) : (
           <>
           {loggedIn ? (
-             <div>Your Routines</div> 
+            <div>
+              <div>Your Routines</div> 
+              <NavLink className="linkBar" to="/makeroutine">Make a New Routine</NavLink>
+            </div>
           ) : (
            <div>Please Log In...</div> 
           )}

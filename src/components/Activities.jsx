@@ -16,7 +16,6 @@ const Activities = (props) => {
       <div id="activity">
         {activities && activities.length
           ? activities.map((activity) => {
-            console.log(activity)
               return (
                <SeeActivityDetails activity={activity} key={`activity-${activity.id}`}/>
               );
