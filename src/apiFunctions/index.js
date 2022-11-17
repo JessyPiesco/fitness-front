@@ -93,6 +93,41 @@ export async function updateActivity(name, description, id){
     return result;
 }
 
+export async function createRoutine(title, goal){
+  const options ={
+      method: "POST",
+      headers:{
+          "Content-type":"application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+          title,
+          goal,
+      }),
+  }
+  const response= await fetch(`${BASE}/routines`, options);
+  const result= await response.json();
+  console.log(result, "HEHEHEEHEH")
+  return result.routines
+}
+
+export async function updateRoutine(title, goal, id){
+  const options={
+      method:"PATCH",
+      headers:{
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+          title,
+          goal,
+      }),
+  };
+  const response= await fetch(`${BASE}/routines/${id}`, options);
+  const result= await response.json();
+  return result;
+}
+
 export async function personalRoutines(username){
   try {
     const response = await fetch(`${BASE}/users/${username}/routines`, {
