@@ -1,8 +1,9 @@
 import React, {useState} from "react";
-import { updateRoutine, addActivity } from "../apiFunctions";
+import { updateRoutine, addActivity, destroyRoutine } from "../apiFunctions";
 
 const SeeRoutineDetails = (props) => {
   const routine=props.routine
+  const setRoutines = props.setRoutines
   const activities=props.activities
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
@@ -35,6 +36,15 @@ function handleChange() {
     }
   }
 
+  async function handleDelete(e){
+    e.preventDefault();
+    console.log(e, "LUigi")
+    const toDelete = e.target.id;
+    const token = localStorage.getItem("token");
+    const deleted = await destroyRoutine(toDelete, token);
+    navigate("/routines");
+  }
+
 return(
 <div className="IRoutines">
   <div>{routine.name}</div>
@@ -59,6 +69,9 @@ return(
 <button onClick={addActivityToRoutine}>
 Add Activity
 </button>
+<button onClick={handleDelete} id={routine.id}>
+          Delete
+        </button>
 {!update ?
                 <button onClick={()=>{
                     setUpdate(true)
