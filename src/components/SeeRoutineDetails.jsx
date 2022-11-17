@@ -1,12 +1,17 @@
 import React, {useState} from "react";
-import { updateRoutine } from "../apiFunctions";
+import { updateRoutine, addActivity } from "../apiFunctions";
 
 const SeeRoutineDetails = (props) => {
   const routine=props.routine
+  const activities=props.activities
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
   const [isPublic, setIsPublic] = useState(false);
   const [update, setUpdate]= useState(false)
+  const [selectedActivity, setSelectedActivity]=useState()
+  const [count, setCount] = useState("");
+  const [duration, setDuration] = useState("");
+
 
   async function handleSubmit(event){
     try{
@@ -18,6 +23,17 @@ const SeeRoutineDetails = (props) => {
 function handleChange() {
     setIsPublic(!isPublic);
   }
+  function handleSelect(event){
+    setSelectedActivity(event.target[event.target.selectedIndex].value)
+
+  }
+  async function addActivityToRoutine(){
+    try{
+      const addActivities= await addActivity(routine.id, selectedActivity, count, duration)
+    }catch(error){
+      console.error(error)
+    }
+  }
 
 return(
 <div className="IRoutines">
@@ -27,7 +43,22 @@ return(
 {routine.activities.map((activity) => {
     return(
   <div key={`routineActivities-${routine.id}-${activity.id}`}>{activity.name}</div>)})}
+<select required onChange={handleSelect}>
+<option selected disabled>--Pick an activity--</option>
 
+{
+  activities.map((activity)=>{
+    return(
+      <option value={activity.id}>
+        {activity.name}
+      </option>
+    )
+  })
+}
+</select>
+<button onClick={addActivityToRoutine}>
+Add Activity
+</button>
 {!update ?
                 <button onClick={()=>{
                     setUpdate(true)

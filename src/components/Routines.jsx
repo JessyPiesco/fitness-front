@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const Routines = (props) => {
   const routines = props.routines;
+  const activities=props.activities
 
 
   return (
@@ -18,7 +19,7 @@ const Routines = (props) => {
         {routines && routines.length
           ? routines.map((routine) => {
               return (
-                <SeeRoutineDetails routine={routine} key={`routine-${routine.id}`}/>
+                <SeeRoutineDetails activities={activities} routine={routine} key={`routine-${routine.id}`}/>
               );
             })
           : null}
