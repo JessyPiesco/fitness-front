@@ -128,9 +128,9 @@ export async function updateRoutine(title, goal, id){
     return result;
 }
 
-export async function personalRoutines(){
+export async function personalRoutines(username){
   try {
-    const profileRoutines = await fetch(`${BASE}/users/:username/routines`, {
+    const profileRoutines = await fetch(`${BASE}/users/${username}/routines`, {
       headers: {
         "Content-Type": "application/json",
       },

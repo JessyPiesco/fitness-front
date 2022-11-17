@@ -3,8 +3,9 @@ import { createRoutine } from "../apiFunctions";
 
 const MakeRoutine = (props) => {
 
-    const [title, setTitle]= useState("")
+    const [name, setName]= useState("")
     const [goal, setGoal]=useState("")
+    const [isPublic, setIsPublic]= useState(false)
 
     async function handleSubmit(event){
       try{
@@ -19,10 +20,10 @@ const MakeRoutine = (props) => {
         event.preventDefault();
         handleSubmit()
       }}>
-        <input placeholder="Title"
-        className="title"
+        <input placeholder="Name"
+        className="name"
         type="text"
-        value={title}
+        value={name}
         onChange={(event)=>{
           setTitle(event.target.value)
         }}
@@ -34,6 +35,15 @@ const MakeRoutine = (props) => {
         value={goal}
         onChange={(event)=>{
           setGoal(event.target.value)
+        }}
+        required>
+         </input>
+         <input
+        className="isPublic"
+        type="checkbox"
+        value={isPublic}
+        onChange={(event)=>{
+          setIsPublic(event.target.value)
         }}
         required>
          </input>
