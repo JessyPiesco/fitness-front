@@ -93,7 +93,6 @@ export async function updateActivity(name, description, id){
     return result;
 }
 
-
 export async function personalRoutines(username){
   try {
     const response = await fetch(`${BASE}/users/${username}/routines`, {
