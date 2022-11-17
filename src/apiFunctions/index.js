@@ -93,7 +93,7 @@ export async function updateActivity(name, description, id){
     return result;
 }
 
-export async function createRoutine(title, goal){
+export async function createRoutine(name, goal, isPublic){
   const options ={
       method: "POST",
       headers:{
@@ -101,8 +101,9 @@ export async function createRoutine(title, goal){
           "Authorization": `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
-          title,
+          name,
           goal,
+          isPublic,
       }),
   }
   const response= await fetch(`${BASE}/routines`, options);
