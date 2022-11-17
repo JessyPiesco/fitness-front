@@ -3,6 +3,9 @@ import { updateRoutine } from "../apiFunctions";
 
 const SeeRoutineDetails = (props) => {
   const routine=props.routine
+  const [name, setName] = useState("");
+  const [goal, setGoal] = useState("");
+  const [isPublic, setIsPublic] = useState(false);
   const [update, setUpdate]= useState(false)
 
   async function handleSubmit(event){
@@ -11,6 +14,9 @@ const SeeRoutineDetails = (props) => {
     }catch(error){
       console.log(error)
     }
+  }
+function handleChange() {
+    setIsPublic(!isPublic);
   }
 
 return(
