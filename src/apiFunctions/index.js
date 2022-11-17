@@ -111,7 +111,7 @@ export async function createRoutine(name, goal, isPublic){
   return result.routines
 }
 
-export async function updateRoutine(title, goal, id){
+export async function updateRoutine(name, goal, id){
   const options={
       method:"PATCH",
       headers:{
@@ -119,12 +119,25 @@ export async function updateRoutine(title, goal, id){
           "Authorization": `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
-          title,
+          name,
           goal,
       }),
   };
   const response= await fetch(`${BASE}/routines/${id}`, options);
   const result= await response.json();
+  return result;
+}
+
+export async function destroyRoutine(id){
+  const options={
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("token")}`,
+    }
+  };
+  const response = await fetch(`${BASE}/routines/${id}`, options);
+  const result = await response.json()
   return result;
 }
 
