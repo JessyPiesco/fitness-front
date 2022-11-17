@@ -123,7 +123,7 @@ export async function addActivity(routineId, activityId, count, duration){
         duration,
     }),
 }
-const response= await fetch(`${BASE}/routines${routineId}/activities`, options);
+const response= await fetch(`${BASE}/routines/${routineId}/activities`, options);
 const result= await response.json();
 return result.routines
 }
