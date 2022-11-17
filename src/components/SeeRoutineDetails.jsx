@@ -9,8 +9,8 @@ const SeeRoutineDetails = (props) => {
   const [isPublic, setIsPublic] = useState(false);
   const [update, setUpdate]= useState(false)
   const [selectedActivity, setSelectedActivity]=useState()
-  const [count, setCount] = useState("");
-  const [duration, setDuration] = useState("");
+  const [count, setCount] = useState(0);
+  const [duration, setDuration] = useState(0);
 
 
   async function handleSubmit(event){
@@ -44,7 +44,7 @@ return(
     return(
   <div key={`routineActivities-${routine.id}-${activity.id}`}>{activity.name}</div>)})}
 <select required onChange={handleSelect}>
-<option selected disabled>--Pick an activity--</option>
+<option disabled>--Pick an activity--</option>
 
 {
   activities.map((activity)=>{
