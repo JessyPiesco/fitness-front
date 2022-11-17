@@ -11,7 +11,7 @@ return(<>
 
   {routine.activities.map((activity) => {
     return(
-  <div>{activity.name}</div>)})}
+  <div key={`routineActivities-${routine.id}-${activity.id}`}>{activity.name}</div>)})}
 </div>
 </>
 )
