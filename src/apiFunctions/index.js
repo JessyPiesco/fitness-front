@@ -108,7 +108,7 @@ export async function createRoutine(name, goal, isPublic){
   }
   const response= await fetch(`${BASE}/routines`, options);
   const result= await response.json();
-  return result.routines
+  return result
 }
 export async function addActivity(routineId, activityId, count, duration){
   const options ={
@@ -180,7 +180,7 @@ export async function deleteRoutineActivity(id){
       "Authorization": `Bearer ${localStorage.getItem("token")}`,
     }
   };
-  const response = await fetch(`${BASE}/routines_activities/${id}`, options);
+  const response = await fetch(`${BASE}/routine_activities/${id}`, options);
   const result = await response.json()
   return result;
 }

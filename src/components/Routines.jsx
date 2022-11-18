@@ -7,6 +7,8 @@ const Routines = (props) => {
   const routines = props.routines;
   const setRoutines = props.setRoutines
   const activities = props.activities;
+  const singleRoutine= props.singleRoutine
+  const setSingleRoutine=props.setSingleRoutine
 
   return (
     <div>
@@ -20,6 +22,8 @@ const Routines = (props) => {
           ? routines.map((routine) => {
               return (
                 <SeeRoutineDetails
+                singleRoutine={singleRoutine}
+                setSingleRoutine={setSingleRoutine}
                   routines={routines}
                   setRoutines={setRoutines}
                   activities={activities}

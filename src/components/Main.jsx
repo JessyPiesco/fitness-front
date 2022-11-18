@@ -10,6 +10,7 @@ import {
   Profile,
   MakeActivity,
   MakeRoutine,
+  FullDetails,
 } from "./";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -20,6 +21,7 @@ const Main = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userRoutines, setUserRoutines] = useState([]);
   const [userName, setUserName] = useState("");
+  const [singleRoutine, setSingleRoutine]=useState({})
 
   useEffect(() => {
     async function fetchProfile() {
@@ -73,7 +75,7 @@ const Main = () => {
 
       />
       <Routes>
-        <Route path="/routines" element={<Routines routines={routines} setRoutines={setRoutines} activities={activities}/>} />
+        <Route path="/routines" element={<Routines routines={routines} setRoutines={setRoutines} activities={activities} singleRoutine={singleRoutine} setSingleRoutine={setSingleRoutine}/>} />
 
         <Route path="/makeroutine" element={<MakeRoutine routines={routines} setRoutines={setRoutines}/>} />
         <Route
@@ -97,6 +99,7 @@ const Main = () => {
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile routines={userRoutines} loggedIn={loggedIn} setLoggedIn={setLoggedIn}
         userName={userName} setUserName={setUserName}/>} />
+        <Route path="/fulldetails" element={<FullDetails setActivities={setActivities} activities={activities} singleRoutine={singleRoutine}/>}/>
       </Routes>
     </div>
   );

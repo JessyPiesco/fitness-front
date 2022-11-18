@@ -14,7 +14,7 @@ const MakeRoutine = (props) => {
     try {
       const newRoutine = await createRoutine(name, goal, isPublic);
       setRoutines([newRoutine, ...routines])
-      navigate("/activities")
+      navigate("/routines")
     } catch (error) {
       console.log(error);
     }

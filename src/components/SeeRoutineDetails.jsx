@@ -1,26 +1,29 @@
 import React, {useState} from "react";
 import { updateRoutine, addActivity, destroyRoutine, deleteRoutineActivity } from "../apiFunctions";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
+import FullDetails from "./FullDetails";
 
 const SeeRoutineDetails = (props) => {
   const routine=props.routine
   const routines = props.routines
   const setRoutines = props.setRoutines
   const activities=props.activities
+  const singleRoutine=props.singleRoutine
+  const setSingleRoutine=props.setSingleRoutine
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
   const [isPublic, setIsPublic] = useState(false);
   const [update, setUpdate]= useState(false)
-  const [selectedActivity, setSelectedActivity]=useState()
-  const [count, setCount] = useState(0);
-  const [duration, setDuration] = useState(0);
+
+
+
   const navigate = useNavigate()
 
   async function handleSubmit(event){
     try{
       const updateRoutines= await updateRoutine(name, goal, routine.id)
       setRoutines([...routines, updateRoutines])
-      navigate("/activities")
+      navigate("/routines")
     }catch(error){
       console.log(error)
     }
@@ -28,10 +31,10 @@ const SeeRoutineDetails = (props) => {
 function handleChange() {
     setIsPublic(!isPublic);
   }
-  function handleSelect(event){
-    setSelectedActivity(event.target[event.target.selectedIndex].value)
+  // function handleSelect(event){
+  //   setSelectedActivity(event.target[event.target.selectedIndex].value)
 
-  }
+  // }
   async function addActivityToRoutine(){
     try{
       const addActivities= await addActivity(routine.id, selectedActivity, count, duration)
@@ -49,45 +52,18 @@ function handleChange() {
     navigate("/routines");
   }
 
-  async function handleDeleteActivities(event){
-    event.preventDefault();
-    const toDelete = event.target.id;
-    const token = localStorage.getItem("token");
-    const deleted = await deleteRoutineActivity(toDelete);
-    navigate("/routines");
-  }
 
 return(
 <div className="IRoutines">
   <div id="Rname">{routine.name}</div>
   <div>Created by: {routine.creatorName} </div>
   <div>{routine.goal}</div>
-{routine.activities.map((activity) => {
-    return(<>
-  <div key={`routineActivities-${routine.id}-${activity.id}`} id="Aname">{activity.name}</div>
-  <div>Count:{activity.count}</div>
-  <div>Duration:{activity.duration}</div>
-  </>
-  )})}
-<select required onChange={handleSelect}>
-<option disabled>--Pick an activity--</option>
-
-{
-  activities.map((activity)=>{
-    return(
-      <option value={activity.id}>
-        {activity.name}
-      </option>
-    )
-  })
-}
-</select>
-<form>
-
-</form>
-<button onClick={addActivityToRoutine}>
-Add Activity
-</button>
+  {/* <FullDetails routine={routine}/> */}
+{/* took full details from here */}
+<button >
+  <NavLink onClick={()=>{
+  setSingleRoutine(routine)
+}} to="/fulldetails">Full details of Routine</NavLink></button>
 <button onClick={handleDelete} id={routine.id}>
           Delete
         </button>
