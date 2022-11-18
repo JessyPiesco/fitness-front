@@ -15,7 +15,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const Main = () => {
   const [routines, setRoutines] = useState([]);
-  const [activities, setActvities] = useState([]);
+  const [activities, setActivities] = useState([]);
   // const[logIn, setLogIn] = useState("")
   const [loggedIn, setLoggedIn] = useState(false);
   const [userRoutines, setUserRoutines] = useState([]);
@@ -41,7 +41,7 @@ const Main = () => {
   useEffect(() => {
     async function fetchActivities() {
       const allActivities = await getActivities();
-      setActvities(allActivities);
+      setActivities(allActivities);
     }
     fetchActivities();
   }, []);
@@ -62,6 +62,7 @@ const Main = () => {
       getLoggedInUser();
     }
   }, []);
+
 
   return (
     <div id="main">
@@ -90,9 +91,9 @@ const Main = () => {
         <Route path="/register" element={<Register />} />
         <Route
           path="/activities"
-          element={<Activities activities={activities} />}
+          element={<Activities activities={activities} setActivities={setActivities}/>}
         />
-        <Route path="/makeactivity" element={<MakeActivity />} />
+        <Route path="/makeactivity" element={<MakeActivity activities={activities} setActivities={setActivities}/>} />
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile routines={userRoutines} loggedIn={loggedIn} setLoggedIn={setLoggedIn}
         userName={userName} setUserName={setUserName}/>} />

@@ -17,7 +17,7 @@ const Login = (props) => {
       const password = e.target[1].value;
       
       const token = await loginUser(username, password);
-      console.log(username)
+      
       
       localStorage.removeItem("token");
       localStorage.setItem("token", token);
@@ -28,7 +28,7 @@ const Login = (props) => {
       setLoggedIn(true);
       getLoggedInUser();
       setUserName(username);
-      console.log(userName, "AUGHHHHH")
+      
       navigate("/")
     } catch (error) {
       console.log(error);
