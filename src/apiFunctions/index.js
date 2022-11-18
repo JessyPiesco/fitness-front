@@ -73,7 +73,7 @@ export async function createActivity(name, description){
     }
     const response= await fetch(`${BASE}/activities`, options);
     const result= await response.json();
-    return result.activities
+    return result
 }
 
 export async function updateActivity(name, description, id){
@@ -146,7 +146,6 @@ export async function updateRoutine(name, goal, id){
 }
 
 export async function destroyRoutine(id){
-  console.log(id, "hello")
   const options={
     method: "DELETE",
     headers: {
@@ -171,4 +170,17 @@ export async function personalRoutines(username){
   } catch (error) {
     console.log(error);
   }
+}
+
+export async function deleteRoutineActivity(id){
+  const options={
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("token")}`,
+    }
+  };
+  const response = await fetch(`${BASE}/routines_activities/${id}`, options);
+  const result = await response.json()
+  return result;
 }

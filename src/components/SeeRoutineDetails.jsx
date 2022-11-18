@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { updateRoutine, addActivity, destroyRoutine } from "../apiFunctions";
+import { updateRoutine, addActivity, destroyRoutine, deleteRoutineActivity } from "../apiFunctions";
 
 const SeeRoutineDetails = (props) => {
   const routine=props.routine
@@ -45,14 +45,26 @@ function handleChange() {
     navigate("/routines");
   }
 
+  async function handleDeleteActivities(event){
+    event.preventDefault();
+    const toDelete = event.target.id;
+    const token = localStorage.getItem("token");
+    const deleted = await deleteRoutineActivity(toDelete);
+    navigate("/routines");
+  }
+
 return(
 <div className="IRoutines">
-  <div>{routine.name}</div>
+  <div id="Rname">{routine.name}</div>
   <div>Created by: {routine.creatorName} </div>
   <div>{routine.goal}</div>
 {routine.activities.map((activity) => {
-    return(
-  <div key={`routineActivities-${routine.id}-${activity.id}`}>{activity.name}</div>)})}
+    return(<>
+  <div key={`routineActivities-${routine.id}-${activity.id}`} id="Aname">{activity.name}</div>
+  <div>Count:{activity.count}</div>
+  <div>Duration:{activity.duration}</div>
+  </>
+  )})}
 <select required onChange={handleSelect}>
 <option disabled>--Pick an activity--</option>
 
@@ -66,6 +78,9 @@ return(
   })
 }
 </select>
+<form>
+
+</form>
 <button onClick={addActivityToRoutine}>
 Add Activity
 </button>
