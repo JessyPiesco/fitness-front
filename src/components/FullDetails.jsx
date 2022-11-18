@@ -34,7 +34,12 @@ const FullDetails = (props) => {
         count,
         duration
       );
-      // setRoutines([...routine, addActivities])
+      /*
+      1. grab copy of routine
+      2. replace routine.activities with [...activities,addActivities]
+      3. setRoutine(newCopyofRoutine)
+      */ 
+     setSingleRoutine([...routine, addActivities])
     } catch (error) {
       console.error(error);
     }
@@ -59,8 +64,8 @@ const FullDetails = (props) => {
     const routineCopy = {...routine}
     routineCopy.activities = warning
     console.log(routineCopy, "this is a copy")
-    setRoutines([routineCopy, ...routines])
-    setSingleRoutine(routine)
+    // setRoutines([routineCopy, ...routines])
+    setSingleRoutine(routineCopy)
   }
 
   return (
@@ -68,8 +73,8 @@ const FullDetails = (props) => {
       <div id="Rname">{routine.name}</div>
       <div>Created by: {routine.creatorName} </div>
       <div>{routine.goal}</div>
-
-      {routine.activities.map((activity) => {
+      
+      {routine.activities ? routine.activities.map((activity) => {
         return (
 
           <div key={`routineActivities-${routine.id}-${activity.id}`} >
@@ -86,7 +91,7 @@ const FullDetails = (props) => {
           </form>
           </div>
         );
-      })}
+      }): (<p>loading...</p>)}
 
       <select required onChange={handleSelect}>
         <option disabled>--Pick an activity--</option>
