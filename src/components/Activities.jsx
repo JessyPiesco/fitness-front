@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { MakeActivity, SeeActivityDetails } from "./";
 import { NavLink } from "react-router-dom";
 
 const Activities = (props) => {
   const activities = props.activities;
-
+  const setActivities = props.setActivities;
 
   return (
     <div>
@@ -17,7 +17,12 @@ const Activities = (props) => {
         {activities && activities.length
           ? activities.map((activity) => {
               return (
-               <SeeActivityDetails activity={activity} key={`activity-${activity.id}`}/>
+                <SeeActivityDetails
+                key={`activity-${activity.id}`}
+                  activity={activity}
+                  activities={activities}
+                  setActivities={setActivities}
+                />
               );
             })
           : null}
