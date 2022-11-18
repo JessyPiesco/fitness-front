@@ -21,16 +21,17 @@ const Main = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userRoutines, setUserRoutines] = useState([]);
   const [userName, setUserName] = useState("");
-  const [singleRoutine, setSingleRoutine]=useState({})
+  const [singleRoutine, setSingleRoutine] = useState({});
 
   useEffect(() => {
     async function fetchProfile() {
       const allProfile = await personalRoutines(userName);
-      setUserRoutines(allProfile)
+      setUserRoutines(allProfile);
     }
-    if(userName){
-    fetchProfile()}
-  }, [userName])
+    if (userName) {
+      fetchProfile();
+    }
+  }, [userName]);
 
   useEffect(() => {
     async function fetchRoutines() {
@@ -54,7 +55,7 @@ const Main = () => {
       setLoggedIn(true);
     }
     const user = localStorage.getItem("username");
-    if(user) {
+    if (user) {
       setUserName(user);
     }
   };
@@ -65,19 +66,29 @@ const Main = () => {
     }
   }, []);
 
-
   return (
     <div id="main">
-      <Navbar
-        loggedIn={loggedIn}
-        setLoggedIn={setLoggedIn}
-
-
-      />
+      <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Routes>
-        <Route path="/routines" element={<Routines routines={routines} setRoutines={setRoutines} activities={activities} singleRoutine={singleRoutine} setSingleRoutine={setSingleRoutine}/>} />
+        <Route
+          path="/routines"
+          element={
+            <Routines
+              routines={routines}
+              setRoutines={setRoutines}
+              activities={activities}
+              singleRoutine={singleRoutine}
+              setSingleRoutine={setSingleRoutine}
+            />
+          }
+        />
 
-        <Route path="/makeroutine" element={<MakeRoutine routines={routines} setRoutines={setRoutines}/>} />
+        <Route
+          path="/makeroutine"
+          element={
+            <MakeRoutine routines={routines} setRoutines={setRoutines} />
+          }
+        />
         <Route
           path="/login"
           element={
@@ -93,13 +104,45 @@ const Main = () => {
         <Route path="/register" element={<Register />} />
         <Route
           path="/activities"
-          element={<Activities activities={activities} setActivities={setActivities}/>}
+          element={
+            <Activities activities={activities} setActivities={setActivities} />
+          }
         />
-        <Route path="/makeactivity" element={<MakeActivity activities={activities} setActivities={setActivities}/>} />
+        <Route
+          path="/makeactivity"
+          element={
+            <MakeActivity
+              activities={activities}
+              setActivities={setActivities}
+            />
+          }
+        />
         <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile routines={userRoutines} loggedIn={loggedIn} setLoggedIn={setLoggedIn}
-        userName={userName} setUserName={setUserName}/>} />
-        <Route path="/fulldetails" element={<FullDetails setActivities={setActivities} activities={activities} singleRoutine={singleRoutine}/>}/>
+        <Route
+          path="/profile"
+          element={
+            <Profile
+              routines={userRoutines}
+              loggedIn={loggedIn}
+              setLoggedIn={setLoggedIn}
+              userName={userName}
+              setUserName={setUserName}
+            />
+          }
+        />
+        <Route
+          path="/fulldetails"
+          element={
+            <FullDetails
+              setRoutines={setRoutines}
+              setSingleRoutine={setSingleRoutine}
+              setActivities={setActivities}
+              routines={routines}
+              activities={activities}
+              singleRoutine={singleRoutine}
+            />
+          }
+        />
       </Routes>
     </div>
   );

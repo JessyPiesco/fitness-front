@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { deleteRoutineActivity, addActivity } from "../apiFunctions";
 
 const FullDetails = (props) => {
   const routine = props.singleRoutine;
+  const routines = props.routines
   const activities = props.activities;
   const setActivities = props.setActivities;
+  const setSingleRoutine = props.setSingleRoutine
+  const setRoutines = props.setRoutines
   const [selectedActivity, setSelectedActivity] = useState();
   const [count, setCount] = useState(0);
   const [duration, setDuration] = useState(0);
+  const navigate = useNavigate()
 
   function handleSelect(event) {
     setSelectedActivity(event.target[event.target.selectedIndex].value);
@@ -22,19 +26,26 @@ const FullDetails = (props) => {
         count,
         duration
       );
+      // setRoutines([...routine, addActivities])
     } catch (error) {
       console.error(error);
     }
   }
 
   async function handleDeleteActivities(event) {
-    console.log(event, "event")
+    console.log(event, "NOOOO")
     event.preventDefault();
     const toDelete = event.target.id;
-    console.log(toDelete, "WHY??")
     const token = localStorage.getItem("token");
     const deleted = await deleteRoutineActivity(toDelete);
-    setActivities([...activities]);
+    const warning = activities.filter((activity) => {
+     console.log(activity, "hello") 
+     activity.id !== toDelete
+    })
+    
+    setActivities(warning);
+    
+    // setSingleRoutine(routine)
   }
 
   return (

@@ -49,7 +49,7 @@ function handleChange() {
     const toDelete = e.target.id;
     const token = localStorage.getItem("token");
     const deleted = await destroyRoutine(toDelete, token);
-    navigate("/routines");
+    setRoutines([...routines])
   }
 
 
