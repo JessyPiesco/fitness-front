@@ -73,9 +73,9 @@ const Main = () => {
 
       />
       <Routes>
-        <Route path="/routines" element={<Routines routines={routines} activities={activities}/>} />
+        <Route path="/routines" element={<Routines routines={routines} setRoutines={setRoutines} activities={activities}/>} />
 
-        <Route path="/makeroutine" element={<MakeRoutine />} />
+        <Route path="/makeroutine" element={<MakeRoutine routines={routines} setRoutines={setRoutines}/>} />
         <Route
           path="/login"
           element={

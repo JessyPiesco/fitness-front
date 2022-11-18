@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import { updateRoutine, addActivity, destroyRoutine, deleteRoutineActivity } from "../apiFunctions";
+import { useNavigate } from "react-router-dom";
 
 const SeeRoutineDetails = (props) => {
   const routine=props.routine
+  const routines = props.routines
   const setRoutines = props.setRoutines
   const activities=props.activities
   const [name, setName] = useState("");
@@ -12,11 +14,13 @@ const SeeRoutineDetails = (props) => {
   const [selectedActivity, setSelectedActivity]=useState()
   const [count, setCount] = useState(0);
   const [duration, setDuration] = useState(0);
-
+  const navigate = useNavigate()
 
   async function handleSubmit(event){
     try{
       const updateRoutines= await updateRoutine(name, goal, routine.id)
+      setRoutines([...routines, updateRoutines])
+      navigate("/activities")
     }catch(error){
       console.log(error)
     }
