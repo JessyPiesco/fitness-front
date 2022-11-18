@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { deleteRoutineActivity, addActivity } from "../apiFunctions";
 
@@ -12,11 +12,15 @@ const FullDetails = (props) => {
   const [selectedActivity, setSelectedActivity] = useState();
   const [count, setCount] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [localActivities, setLocalActivities] = useState([])
   const navigate = useNavigate()
 
   function handleSelect(event) {
     setSelectedActivity(event.target[event.target.selectedIndex].value);
   }
+  useEffect (()=> {
+    setLocalActivities(activities)
+  },[activities])
 
   async function addActivityToRoutine() {
     try {
@@ -36,15 +40,22 @@ const FullDetails = (props) => {
     console.log(event, "NOOOO")
     event.preventDefault();
     const toDelete = event.target.id;
+    console.log(toDelete, "This is toDelete")
     const token = localStorage.getItem("token");
     const deleted = await deleteRoutineActivity(toDelete);
-    const warning = activities.filter((activity) => {
+    console.log(deleted, "this is deleted")
+    const warning = routine.activities.filter((activity) => {
      console.log(activity, "hello") 
-     activity.id !== toDelete
+     return activity.routineActivityId !== deleted.id
     })
     
-    setActivities(warning);
-    
+    // setLocalActivities(warning);
+
+
+    const routineCopy = {...routine}
+    routineCopy.activities = warning
+    console.log(routineCopy, "this is a copy")
+    setRoutines([routineCopy, ...routines])
     // setSingleRoutine(routine)
   }
 
@@ -75,7 +86,7 @@ const FullDetails = (props) => {
 
       <select required onChange={handleSelect}>
         <option disabled>--Pick an activity--</option>
-        {activities.map((activity) => {
+        {localActivities.map((activity) => {
           return (
             <option
               key={`individualActivity-${activity.id}`}
