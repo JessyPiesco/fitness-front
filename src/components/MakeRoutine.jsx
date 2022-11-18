@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { createRoutine } from "../apiFunctions";
+import { useNavigate } from "react-router-dom";
 
 const MakeRoutine = (props) => {
+  const routines = props.routines
+  const setRoutines = props.setRoutines
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
   const [isPublic, setIsPublic] = useState(false);
+  const navigate = useNavigate()
 
   async function handleSubmit(event) {
     try {
       const newRoutine = await createRoutine(name, goal, isPublic);
+      setRoutines([newRoutine, ...routines])
+      navigate("/activities")
     } catch (error) {
       console.log(error);
     }

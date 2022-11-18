@@ -12,7 +12,6 @@ const MakeActivity = (props) => {
   async function handleSubmit(event){
     try{
       const newActivity= await createActivity(name, description)
-      console.log(newActivity, "hellop")
       setActivities([newActivity, ...activities])
       navigate("/activities")
     }catch(error){

@@ -18,10 +18,10 @@ const Activities = (props) => {
           ? activities.map((activity) => {
               return (
                 <SeeActivityDetails
+                activity={activity}
+                activities={activities}
+                setActivities={setActivities}
                 key={`activity-${activity.id}`}
-                  activity={activity}
-                  activities={activities}
-                  setActivities={setActivities}
                 />
               );
             })
