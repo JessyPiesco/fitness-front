@@ -22,7 +22,7 @@ const FullDetails = (props) => {
     setLocalActivities(activities)
   },[activities])
 
-  useEffect(()=>{
+  useEffect (()=> {
     setSingleRoutine(routine)
   },[routine])
 
@@ -49,10 +49,10 @@ const FullDetails = (props) => {
     const deleted = await deleteRoutineActivity(toDelete);
     console.log(deleted, "this is deleted")
     const warning = routine.activities.filter((activity) => {
-     console.log(activity, "hello")
+     console.log(activity, "hello") 
      return activity.routineActivityId !== deleted.id
     })
-
+    
     // setLocalActivities(warning);
 
 
