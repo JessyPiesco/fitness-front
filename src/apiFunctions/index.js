@@ -125,7 +125,8 @@ export async function addActivity(routineId, activityId, count, duration){
 }
 const response= await fetch(`${BASE}/routines/${routineId}/activities`, options);
 const result= await response.json();
-return result.routines
+console.log(result, "addResult")
+return result;
 }
 
 export async function updateRoutine(name, goal, id){
@@ -182,5 +183,23 @@ export async function deleteRoutineActivity(id){
   };
   const response = await fetch(`${BASE}/routine_activities/${id}`, options);
   const result = await response.json()
+  return result;
+}
+
+export async function updateRoutineActivity(routineId, activityId, count, duration){
+  const options={
+      method:"PATCH",
+      headers:{
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+          activityId,
+          count,
+          duration,
+      }),
+  };
+  const response= await fetch(`${BASE}/routines/${routineId}/activities`, options);
+  const result= await response.json();
   return result;
 }
