@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
-import { deleteRoutineActivity, addActivity } from "../apiFunctions";
+import { deleteRoutineActivity, addActivity, updateRoutineActivity } from "../apiFunctions";
 
 const FullDetails = (props) => {
   const routine = props.singleRoutine;
@@ -13,6 +13,7 @@ const FullDetails = (props) => {
   const [count, setCount] = useState(0);
   const [duration, setDuration] = useState(0);
   const [localActivities, setLocalActivities] = useState([])
+  const [update, setUpdate]= useState(false)
   const navigate = useNavigate()
 
   function handleSelect(event) {
@@ -38,33 +39,34 @@ const FullDetails = (props) => {
       1. grab copy of routine
       2. replace routine.activities with [...activities,addActivities]
       3. setRoutine(newCopyofRoutine)
-      */ 
-     setSingleRoutine([...routine, addActivities])
+      */
+        console.log(addActivities, "addActivities")
+      const routineCopy = {...routine}
+      routineCopy.activities = [...routine.activities, addActivities]
+        console.log(routineCopy, "RoutineCopy")
+        console.log(routineCopy.activities, "routine.activities")
+      setSingleRoutine(routineCopy)
     } catch (error) {
       console.error(error);
     }
   }
+  async function handleUpdateActivities(event){
+    event.preventDefault();
+    const toUpdate=event.target.id;
+    const token=localStorage.getItem("token");
+    const updated= await updateRoutineActivity(toUpdate, selectedActivity, count,duration)
+}
 
   async function handleDeleteActivities(event) {
-    console.log(event, "NOOOO")
     event.preventDefault();
     const toDelete = event.target.id;
-    console.log(toDelete, "This is toDelete")
     const token = localStorage.getItem("token");
     const deleted = await deleteRoutineActivity(toDelete);
-    console.log(deleted, "this is deleted")
     const warning = routine.activities.filter((activity) => {
-     console.log(activity, "hello") 
      return activity.routineActivityId !== deleted.id
     })
-    
-    // setLocalActivities(warning);
-
-
     const routineCopy = {...routine}
     routineCopy.activities = warning
-    console.log(routineCopy, "this is a copy")
-    // setRoutines([routineCopy, ...routines])
     setSingleRoutine(routineCopy)
   }
 
@@ -73,7 +75,7 @@ const FullDetails = (props) => {
       <div id="Rname">{routine.name}</div>
       <div>Created by: {routine.creatorName} </div>
       <div>{routine.goal}</div>
-      
+
       {routine.activities ? routine.activities.map((activity) => {
         return (
 
@@ -88,6 +90,36 @@ const FullDetails = (props) => {
             <div>Count:{activity.count}</div>
             <div>Duration:{activity.duration}</div>
             <button id={activity.routineActivityId} onClick={handleDeleteActivities}>Delete Activity</button>
+            {!update ?
+                <button onClick={()=>{
+                    setUpdate(true)
+                }}>Update Activity</button>:
+                <form onSubmit={(event)=>{
+                    event.preventDefault();
+                    handleUpdateActivities()
+                  }}>
+                    <input placeholder="Count"
+                    className="count"
+                    type="text"
+                    value={count}
+                    onChange={(event)=>{
+                      setCount(event.target.value)
+                    }}
+                    required>
+                    </input>
+                    <input placeholder="Duration"
+                    className="duration"
+                    type="text"
+                    value={duration}
+                    onChange={(event)=>{
+                      setDuration(event.target.value)
+                    }}
+                    required>
+                     </input>
+                     <button onSubmit={handleUpdateActivities} type="submit">Submit</button>
+
+                  </form>
+            }
           </form>
           </div>
         );
