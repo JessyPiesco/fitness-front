@@ -11,6 +11,7 @@ const Profile = (props) => {
   return (
     <div>
       <h2>This is Profile page</h2>
+      <NavLink className="linkBar" to="/makeroutine">Make a New Routine</NavLink>
       <div id="routines">
         {routines.length ? (
           routines.map((routine) => {
@@ -21,7 +22,7 @@ const Profile = (props) => {
                 <div>Created by: {routine.creatorName} </div>
                 <div>{routine.goal}</div>
               </div>
-              <NavLink className="linkBar" to="/makeroutine">Make a New Routine</NavLink>
+              {/* <NavLink className="linkBar" to="/makeroutine">Make a New Routine</NavLink> */}
               </div>
             );
           })
@@ -29,11 +30,11 @@ const Profile = (props) => {
           <>
           {loggedIn ? (
             <div>
-              <div>Your Routines</div> 
-              <NavLink className="linkBar" to="/makeroutine">Make a New Routine</NavLink>
+              <div>Your Routines</div>
+
             </div>
           ) : (
-           <div>Please Log In...</div> 
+           <div>Please Log In...</div>
           )}
           </>
           )}

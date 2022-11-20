@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { MakeRoutine, SeeRoutineDetails } from "./";
-import { getRoutines } from "../apiFunctions";
 import { NavLink } from "react-router-dom";
 
 const Routines = (props) => {

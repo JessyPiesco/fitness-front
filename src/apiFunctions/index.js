@@ -50,8 +50,6 @@ export async function registerUser(username, password) {
   const response = await fetch(`${BASE}/users/register`, options);
   const result = await response.json();
 
-  console.log(response);
-  console.log(result);
 
   if (result.error) {
     alert(result.error);

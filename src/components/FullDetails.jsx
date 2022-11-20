@@ -14,7 +14,6 @@ const FullDetails = (props) => {
   const [duration, setDuration] = useState(0);
   const [localActivities, setLocalActivities] = useState([])
   const [update, setUpdate]= useState(false)
-  const navigate = useNavigate()
 
   function handleSelect(event) {
     setSelectedActivity(event.target[event.target.selectedIndex].value);
@@ -25,7 +24,6 @@ const FullDetails = (props) => {
 
   useEffect (()=> {
     setSingleRoutine(routine)
-    console.log(routine, "LOOKHERE")
   },[routine])
 
   async function addActivityToRoutine() {
@@ -36,16 +34,8 @@ const FullDetails = (props) => {
         count,
         duration
       );
-      /*
-      1. grab copy of routine
-      2. replace routine.activities with [...activities,addActivities]
-      3. setRoutine(newCopyofRoutine)
-      */
-        console.log(addActivities, "addActivities")
       const routineCopy = {...routine}
       routineCopy.activities = [...routine.activities, addActivities]
-        console.log(routineCopy, "RoutineCopy")
-        console.log(routineCopy.activities, "routine.activities")
       setSingleRoutine(routineCopy)
     } catch (error) {
       console.error(error);
@@ -61,12 +51,6 @@ const FullDetails = (props) => {
       }
     }
   }
-
-//     const toUpdate=event.target.id;
-//     console.log(toUpdate, "toupdate")
-//     const token=localStorage.getItem("token");
-//     const updated= await updateRoutineActivity(toUpdate, selectedActivity, count,duration)
-// }
 
   async function handleDeleteActivities(event) {
     event.preventDefault();

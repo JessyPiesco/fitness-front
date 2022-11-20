@@ -17,7 +17,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 const Main = () => {
   const [routines, setRoutines] = useState([]);
   const [activities, setActivities] = useState([]);
-  // const[logIn, setLogIn] = useState("")
   const [loggedIn, setLoggedIn] = useState(false);
   const [userRoutines, setUserRoutines] = useState([]);
   const [userName, setUserName] = useState("");
