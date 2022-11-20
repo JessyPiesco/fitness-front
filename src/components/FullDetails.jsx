@@ -25,6 +25,7 @@ const FullDetails = (props) => {
 
   useEffect (()=> {
     setSingleRoutine(routine)
+    console.log(routine, "LOOKHERE")
   },[routine])
 
   async function addActivityToRoutine() {
@@ -51,11 +52,21 @@ const FullDetails = (props) => {
     }
   }
   async function handleUpdateActivities(event){
-    event.preventDefault();
-    const toUpdate=event.target.id;
-    const token=localStorage.getItem("token");
-    const updated= await updateRoutineActivity(toUpdate, selectedActivity, count,duration)
-}
+    {
+      try{
+        const updateActivity= await updateRoutineActivity(routine.id, selectedActivity, count, duration)
+
+      }catch(error){
+        console.log(error)
+      }
+    }
+  }
+
+//     const toUpdate=event.target.id;
+//     console.log(toUpdate, "toupdate")
+//     const token=localStorage.getItem("token");
+//     const updated= await updateRoutineActivity(toUpdate, selectedActivity, count,duration)
+// }
 
   async function handleDeleteActivities(event) {
     event.preventDefault();
@@ -80,7 +91,7 @@ const FullDetails = (props) => {
         return (
 
           <div key={`routineActivities-${routine.id}-${activity.id}`} >
-            <form>
+
             <div
 
               id="Aname"
@@ -120,7 +131,7 @@ const FullDetails = (props) => {
 
                   </form>
             }
-          </form>
+
           </div>
         );
       }): (<p>loading...</p>)}

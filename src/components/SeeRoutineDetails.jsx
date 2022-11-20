@@ -49,7 +49,14 @@ function handleChange() {
     const toDelete = e.target.id;
     const token = localStorage.getItem("token");
     const deleted = await destroyRoutine(toDelete, token);
-    setRoutines([...routines])
+
+    const warning = routines.filter((route) => {
+      return route.id!== deleted.id
+     })
+     const routinesCopy = {...routines}
+     routinesCopy.id = warning
+     console.log(routinesCopy)
+     setRoutines(routinesCopy)
   }
 
 
