@@ -20,6 +20,7 @@ const MakeActivity = (props) => {
     
   }
 return(
+  <>
   <div>
     <form onSubmit={(event)=>{
       event.preventDefault();
@@ -47,6 +48,13 @@ return(
 
     </form>
   </div>
+  <div id="background">
+  <img
+    src="https://us.123rf.com/450wm/olejio/olejio1904/olejio190400012/olejio190400012.jpg?ver=6"
+    alt="POW WHAM BOOM"
+  />
+</div>
+  </>
 );
 };
   export default MakeActivity;

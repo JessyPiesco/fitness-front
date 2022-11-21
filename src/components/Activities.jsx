@@ -9,9 +9,9 @@ const Activities = (props) => {
   return (
     <div>
       <div id="activities">
-        <h2>Check out these activities</h2>
+        <h2 className="inputH">Check out these activities</h2>
         <h3>Add them to your routines today!</h3>
-        <NavLink to="/makeactivity">New Activity</NavLink>
+        <NavLink className="linkBar" to="/makeactivity">New Activity</NavLink>
       </div>
       <div id="activity">
         {activities && activities.length

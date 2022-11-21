@@ -36,6 +36,7 @@ const Login = (props) => {
   }
 
   return (
+    <>
     <div id="login-register">
       <div className="box">
         <h2 className="inputH">Log in</h2>
@@ -59,6 +60,13 @@ const Login = (props) => {
         </NavLink>
       </div>
     </div>
+    <div id="background">
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/002/200/682/non_2x/modern-night-city-skyline-landscape-backgrounds-illustration-eps10-vector.jpg"
+            alt="Gotham City"
+          />
+    </div>
+    </>
   );
 };
 

@@ -1,12 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+
 body {
   font-family: 'Raleway', Arial, sans-serif;
   height: 100vh;
   width: 100vw;
   margin: 0;
+  background-color: black;
 }
 
 .inputH {
   margin: 0px;
+  color: white;
+}
+
+h2 {
+  font-size: 30px;
 }
 
 #navbar {
@@ -14,20 +22,41 @@ body {
   flex-grow: 1;
   max-height: 10%;
   min-height: 40px;
-  background-color: grey;
+  background-color: rgba(0, 0, 0, .3);
   color: white;
   padding: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-family: 'Raleway', sans-serif;
 }
 
 .linkBar{
   padding: 3px;
-  color: green;
+  color: white;
+  font-weight: bold;
+  font-size: larger;
 }
 .linkBar:hover{
-  color: blue;
+  color: yellow;
+}
+
+#homePage{
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  font-weight: bolder;
+  font-size: 50px;
+  font-family:'Raleway', sans-serif;
+}
+
+.titlephrase{
+  background-color: rgba(0, 0, 0, .5);
+  border-radius: 20px;
+  padding: 8px;
 }
 
 #login-register{
@@ -35,6 +64,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: linear-gradient;
 }
 
 .box{
@@ -42,7 +72,7 @@ body {
   flex-direction: column;
   width: 350px;
   padding: 30px;
-  background-color: grey;
+  background-color: rgba(0, 0, 0, .5);
   box-shadow: 0 0 12px black;
   border-radius: 25px;
 }
@@ -85,7 +115,7 @@ body {
   justify-content: center;
 }
 .signBtn:hover{
-  color: black;
+  color: yellow;
 }
 
 #routine{
@@ -94,6 +124,9 @@ body {
   margin: 10px;
   margin-bottom: 2px;
   align-items: center;
+  color: white;
+  font-family:'Raleway', sans-serif;
+  margin: none;
 }
 
 .IRoutines{
@@ -124,22 +157,30 @@ body {
   margin: 10px;
   margin-bottom: 2px;
   align-items: center;
+  color: white;
 }
 .IActivities{
-  background-color: white;
+  background-color: rgb(132, 92, 39);
   display: flex;
   width: 75%;
   flex-direction: column;
+  align-items: start;
   margin-bottom: 10px;
   border: solid black 1px;
   padding: 15px;
   box-shadow: 7px 2px 9px black;
 }
 
-/* #background>img{
+#background>img{
   width: 100vw;
   height: 100vh;
   z-index: -30;
   position: absolute;
   top: 0;
-} */
+}
+
+.rBtns{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

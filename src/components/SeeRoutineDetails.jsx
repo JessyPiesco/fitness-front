@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import {
-  updateRoutine,
-  addActivity,
-  destroyRoutine,
-} from "../apiFunctions";
+import { updateRoutine, addActivity, destroyRoutine } from "../apiFunctions";
 import { useNavigate, NavLink } from "react-router-dom";
 
 const SeeRoutineDetails = (props) => {
@@ -57,11 +53,13 @@ const SeeRoutineDetails = (props) => {
   }
 
   return (
+    <>
     <div className="IRoutines">
       <div id="Rname">{routine.name}</div>
       <div>Created by: {routine.creatorName} </div>
       <div>{routine.goal}</div>
-      <button>
+      <div className="rBtns">
+      <button >
         <NavLink
           onClick={() => {
             setSingleRoutine(routine);
@@ -74,14 +72,18 @@ const SeeRoutineDetails = (props) => {
       <button onClick={handleDelete} id={routine.id}>
         Delete
       </button>
+      </div>
       {!update ? (
+        <div className="rBtns">
         <button
+          
           onClick={() => {
             setUpdate(true);
           }}
         >
           Update Activity
         </button>
+        </div>
       ) : (
         <form
           onSubmit={(event) => {
@@ -125,6 +127,13 @@ const SeeRoutineDetails = (props) => {
         </form>
       )}
     </div>
+    <div id="background">
+    <img
+      src="https://c4.wallpaperflare.com/wallpaper/584/718/481/spider-man-marvel-comics-black-background-superhero-wallpaper-thumb.jpg"
+      alt="Best-Spidey"
+    />
+</div>
+    </>
   );
 };
 

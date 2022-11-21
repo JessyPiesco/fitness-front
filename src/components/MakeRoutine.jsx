@@ -23,6 +23,7 @@ const MakeRoutine = (props) => {
     setIsPublic(!isPublic);
   }
   return (
+    <>
     <div>
       <form
         onSubmit={(event) => {
@@ -64,6 +65,13 @@ const MakeRoutine = (props) => {
         </button>
       </form>
     </div>
+    <div id="background">
+    <img
+      src="https://static.vecteezy.com/system/resources/thumbnails/009/272/451/small/animated-anime-manga-background-with-velocity-lines-shining-in-the-center-video.jpg"
+      alt="BreakOut screen"
+    />
+</div>
+    </>
   );
 };
 export default MakeRoutine;

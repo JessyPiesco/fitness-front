@@ -25,6 +25,7 @@ const Register = () => {
   }
 
   return (
+    <>
     <div id="login-register">
       <div className="box">
         <h2 className="inputH">Register</h2>
@@ -45,6 +46,13 @@ const Register = () => {
         </form>
       </div>
     </div>
+    <div id="background">
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/002/093/076/non_2x/modern-city-skyline-sunset-landscape-backgrounds-illustration-eps10-vector.jpg"
+            alt="Daytime Gotham"
+          />
+    </div>
+    </>
   );
 };
 

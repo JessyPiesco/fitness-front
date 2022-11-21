@@ -23,6 +23,7 @@ const navigate = useNavigate()
 
 
 return(
+  <>
     <div className="IActivities" >
                   <div className="title">{activity.name}</div>
                   <div>{activity.description}</div>
@@ -54,13 +55,16 @@ return(
                     required>
                      </input>
                      <button onSubmit={handleSubmit} type="submit">Submit</button>
-
-                  </form>
+                  </form>     
             }
-
-
-
                 </div>
+                <div id="background">
+                <img
+                  src="https://wallpaperaccess.com/full/49624.jpg"
+                  alt="Best-Turtle"
+                />
+            </div>
+  </>
 )
 }
 

@@ -12,9 +12,9 @@ const Routines = (props) => {
   return (
     <div>
       <div id="routine">
-        <h2>Check out these Routines</h2>
+        <h2 className="inputH">Check out these Routines</h2>
         <h3>Try them all!</h3>
-        <NavLink to="/makeroutine">New Routine</NavLink>
+        <NavLink className="linkBar" to="/makeroutine">New Routine</NavLink>
       </div>
       <div id="routines">
         {routines && routines.length
